@@ -11,11 +11,6 @@ if (catkin_FOUND)
   catkin_package()
 
   install(
-    DIRECTORY rviz
-    DESTINATION share/${PROJECT_NAME}
-  )
-
-  install(
     DIRECTORY launch
     DESTINATION share/${PROJECT_NAME}
   )
