@@ -3,7 +3,7 @@
   <arg name="map_file" default="$(find clober_navigation)/maps/map.yaml"/>
   <arg name="open_rviz" default="true"/>
 
-  <!-- launches the basic turtlebot3 world with one basic turtlebot -->
+  <!-- launches the clober logo world -->
   <include file="$(find clober_simulation)/launch/logo_world.launch">
     <arg name="model" value="$(arg model)"/>
   </include>
@@ -28,7 +28,7 @@
   </group>
 
   <!-- launch the free fleet client first -->
-  <node name="turtlebot3_free_fleet_client_node" pkg="free_fleet_client_ros1"
+  <node name="clober_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="cb_0"/>
