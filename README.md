@@ -101,3 +101,17 @@ Verify the topic `/fleet_states` :
 source ~/server_ws/install/setup.bash
 ros2 topic echo /fleet_states
 ```
+
+### 3.3 Multi Clober Simulation
+
+Launch the clober free fleet client ROS 1(noetic) :
+```bash
+source ~/client_ws/install/setup.bash
+roslaunch clober_ff_client_ros1 multi_clober_world_ff.launch
+```
+
+Launch the clober free fleet server int ROS 2(foxy) :
+```bash
+source ~/server_ws/install/setup.bash
+ros2 launch clober_ff_server_ros2 clober_world_ff.xml
+```
