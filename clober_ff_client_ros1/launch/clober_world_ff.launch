@@ -1,0 +1,40 @@
+<launch>
+  <arg name="model" default="clober"/>
+  <arg name="map_file" default="$(find clober_navigation)/maps/map.yaml"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- launches the basic turtlebot3 world with one basic turtlebot -->
+  <include file="$(find clober_simulation)/launch/logo_world.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+
+  <!-- launch the navigation stack with test maps -->
+  <group>
+    <!-- Map server -->
+    <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+    <!-- AMCL -->
+    <include file="$(find clober_navigation)/launch/amcl.launch">
+    </include>
+
+    <!-- move_base -->
+    <include file="$(find clober_navigation)/launch/move_base.launch">
+    </include>
+
+    <!-- rviz -->
+    <group if="$(arg open_rviz)">
+      <include file="$(find clober_description)/launch/rviz.launch"/>
+    </group>
+  </group>
+
+  <!-- launch the free fleet client first -->
+  <node name="turtlebot3_free_fleet_client_node" pkg="free_fleet_client_ros1"
+      type="free_fleet_client_ros1" output="screen">
+    <param name="fleet_name" type="string" value="clober"/>
+    <param name="robot_name" type="string" value="cb_0"/>
+    <param name="level_name" type="string" value="clober_world"/>
+    <param name="dds_domain" type="int" value="42"/>
+    <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
+  </node>
+
+</launch>

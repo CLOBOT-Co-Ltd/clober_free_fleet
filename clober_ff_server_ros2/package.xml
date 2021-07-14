@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>clober_ff_server_ros2</name>
+  <version>1.0.0</version>
+  <description>Free fleet server examples of using clober in ROS 2</description>
+  <maintainer email="ros@clobot.co.kr">clobot-git</maintainer>
+  <license>Apache License 2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>rmf_fleet_msgs</exec_depend>
+  <exec_depend>free_fleet_server_ros2</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
