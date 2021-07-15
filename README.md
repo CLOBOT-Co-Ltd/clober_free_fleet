@@ -115,3 +115,59 @@ Launch the clober free fleet server int ROS 2(foxy) :
 source ~/server_ws/install/setup.bash
 ros2 launch clober_ff_server_ros2 clober_world_ff.xml
 ```
+
+### 3.4 Commands and Requests
+
+There are 3 types of commands/requests that can be sent to the simulated robots through `free_fleet`.
+
+#### 3.4.1 Destination Requests
+
+Destination requests : command the robot to go to the single destination
+
+```bash
+ros2 run clober_ff_server_ros2 send_destination_request.py -f FLEET_NAME -r ROBOT_NAME -x 1.725 -y -0.39 --yaw 0.0 -i UNIQUE_TASK_ID
+```
+
+example : command the clober which name is clober_0 to go to the destination(x, y, yaw : 0.0, 0.0, 0.0), and the task_id is destination_requests_task.
+```bash
+ros2 run clober_ff_server_ros2 send_destination_request.py -f clober -r clober_0 -x 0.0 -y 0.0 --yaw 0.0 -i destination_requests_task
+```
+
+#### 3.4.2 Path Requests
+
+Path Requests : command the robot to perform the string of destination
+
+```bash
+ros2 run clober_ff_server_ros2 send_path_request.py -f FLEET_NAME -r ROBOT_NAME -i UNIQUE_TASK_ID -p '[{"x": 1.725, "y": -0.39, "yaw": 0.0, "level_name": "B1"}, {"x": 1.737, "y": 0.951, "yaw": 1.57, "level_name": "B1"}, {"x": -0.616, "y": 1.852, "yaw": 3.14, "level_name": "B1"}, {"x": -0.626, "y": -1.972, "yaw": 4.71, "level_name": "B1"}]'
+```
+
+example : command the clober which name is clober_0 to perform to the string of destination, and the task_id is path_requests_task.
+
+```bash
+ros2 run clober_ff_server_ros2 send_path_request.py -f clober -r clober_0 -i path_requests_task -p '[{"x": 0.0, "y": 0.0, "yaw": 0.0, "level_name": "B1"}, {"x": 1.0, "y": 1.0, "yaw": 1.57, "level_name": "B1"}, {"x": -1.0, "y": 0.0, "yaw": 3.14, "level_name": "B1"}, {"x": 0.0, "y": 1.0, "yaw": 4.71, "level_name": "B1"}]'
+```
+
+#### 3.4.3 Mode Requests
+
+Mode Requests : command the robot to `pause` or `resume`
+
+* pause
+```bash
+ros2 run clober_ff_server_ros2 send_mode_request.py -f FLEET_NAME -r ROBOT_NAME -m pause -i UNIQUE_TASK_ID
+```
+example : command the clober which name is clober_0 to pause, and the task_id is mode_requests_pause_task.
+
+```bash
+ros2 run clober_ff_server_ros2 send_mode_request.py -f clober -r clober_0 -m pause -i mode_requests_pause_task
+```
+
+* resume
+```bash
+ros2 run ff_examples_ros2 send_mode_request.py -f FLEET_NAME -r ROBOT_NAME -m resume -i UNIQUE_TASK_ID
+```
+
+example : command the clober which name is clober_0 to resume, and the task_id is mode_requests_resume_task.
+
+```bash
+ros2 run clober_ff_server_ros2 send_mode_request.py -f clober -r clober_0 -m resume -i mode_requests_resume_task
+```
