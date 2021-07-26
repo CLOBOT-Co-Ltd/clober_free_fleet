@@ -44,7 +44,7 @@
     </include>
   </group>
 
-  <!-- launch the free fleet client of 3 clobers -->
+  <!-- launch the free fleet client of multi clobers -->
   <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
