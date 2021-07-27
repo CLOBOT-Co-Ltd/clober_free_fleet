@@ -5,7 +5,7 @@
   <arg name="set_map_frame"  default="map"/>
 
   <!-- launches the clober logo world -->
-  <include file="$(find clober_simulation)/launch/multi_logo_world.launch">
+  <include file="$(find clober_simulation)/launch/logo_world.launch">
     <arg name="model" value="$(arg model)"/>
   </include>
 
@@ -23,9 +23,9 @@
       <arg name="set_scan_frame" value="$(arg cb_0_prefix)/base_scan"/>
       <arg name="set_map_frame" value="$(arg set_map_frame)"/>
       <arg name="open_rviz" value="false"/>
-      <arg name="initial_pose_x" default="-1.0"/>
-      <arg name="initial_pose_y" default=" 1.0"/>
-      <arg name="initial_pose_a" default="-1.5708"/>
+      <arg name="initial_pose_x" default=" 0.0"/>
+      <arg name="initial_pose_y" default=" 0.0"/>
+      <arg name="initial_pose_a" default=" 0.0"/>
     </include>
   </group>
 
