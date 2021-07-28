@@ -20,6 +20,8 @@ git clone https://github.com/open-rmf/free_fleet
 git clone https://github.com/eclipse-cyclonedds/cyclonedds
 git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet.git
 git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clober.git
+sudo apt-get install ros-noetic-rosgraph-msgs
+sudo apt-get install ros-noetic-rosgraph 
 ```
 
 Install all the dependencies through rosdep,
@@ -85,7 +87,7 @@ ros2 topic echo /fleet_states
 
 Launch the clober free fleet client ROS 1(noetic) :
 ```bash
-source ~/client_ws/install/setup.bash
+\source ~/client_ws/install/setup.bash
 roslaunch clober_ff_client_ros1 clober_world_ff.launch
 ```
 
