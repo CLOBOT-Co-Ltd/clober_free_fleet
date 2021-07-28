@@ -87,7 +87,7 @@ ros2 topic echo /fleet_states
 
 Launch the clober free fleet client ROS 1(noetic) :
 ```bash
-\source ~/client_ws/install/setup.bash
+source ~/client_ws/install/setup.bash
 roslaunch clober_ff_client_ros1 clober_world_ff.launch
 ```
 
