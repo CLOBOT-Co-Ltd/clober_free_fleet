@@ -1,0 +1,6 @@
+string robotID
+int8 floorIndex
+geometry_msgs/Pose2D coordinates
+---
+bool success
+string message

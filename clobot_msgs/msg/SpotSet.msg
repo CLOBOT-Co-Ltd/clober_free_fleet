@@ -1,0 +1,1 @@
+SpotInfo[] data

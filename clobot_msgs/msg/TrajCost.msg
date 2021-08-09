@@ -1,0 +1,2 @@
+nav_msgs/Path traj_list
+float64 traj_cost
