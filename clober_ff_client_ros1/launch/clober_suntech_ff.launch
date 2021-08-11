@@ -4,23 +4,16 @@
   <arg name="open_rviz" default="true"/>
   <arg name="set_map_frame"  default="map"/>
 
-<<<<<<< HEAD
   <!-- launches the clober 3x3 world -->
   <include file="$(find clober_simulation)/launch/suntech.launch">
     <arg name="model" value="$(arg model)"/>
   </include>
-=======
-  <arg name="cb_0_prefix" value="clober_3"/>
-
-  <include file="$(find clober_bringup)/launch/base.launch"/>
->>>>>>> add real clober exp launch file
 
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)">
     <param name="frame_id" value="$(arg set_map_frame)"/>
   </node>
 
-<<<<<<< HEAD
   <arg name="cb_0_prefix" value="clober"/>
   <group ns="$(arg cb_0_prefix)">
     <include file="$(find clober_ff_client_ros1)/launch/include/single_clober_cmb_ff.launch">
@@ -35,19 +28,6 @@
       <arg name="initial_pose_a" default=" 0.0"/>
     </include>
   </group>
-=======
-  <include file="$(find clober_ff_client_ros1)/launch/include/real_clober_cmb_ff.launch">
-    <arg name="model" value="$(arg model)"/>
-    <arg name="set_base_frame" value="base_footprint"/>
-    <arg name="set_odom_frame" value="odom"/>
-    <arg name="set_scan_frame" value="base_scan"/>
-    <arg name="set_map_frame" value="$(arg set_map_frame)"/>
-    <arg name="open_rviz" value="false"/>
-    <arg name="initial_pose_x" default="4.8"/>
-    <arg name="initial_pose_y" default="0.9"/>
-    <arg name="initial_pose_a" default=" 0.0"/>
-  </include>
->>>>>>> add real clober exp launch file
 
   <!-- launch the free fleet client of multi clobers -->
   <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
@@ -57,14 +37,7 @@
     <param name="level_name" type="string" value="L1"/>
     <param name="dds_domain" type="int" value="123"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
-<<<<<<< HEAD
     <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
-=======
-    <param name="battery_state_topic" value="battery_state"/>
-    <param name="robot_frame" value="base_footprint"/>
-    <param name="move_base_server_name" value="move_base"/>
-    <!-- <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
->>>>>>> add real clober exp launch file
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/>
   </node>
