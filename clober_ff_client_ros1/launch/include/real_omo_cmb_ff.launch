@@ -1,0 +1,104 @@
+<launch>
+
+  <arg name="model" default="omo"/>
+  <arg name="open_rviz" default="false"/>
+
+  <!-- amcl Arguments -->
+  <arg name="scan_topic"     default="scan"/>
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="set_base_frame" default="base_footprint"/>
+  <arg name="set_odom_frame" default="odom"/>
+  <arg name="set_scan_frame" default="base_scan"/>
+  <arg name="set_map_frame"  default="map"/>
+
+  <!-- move_base Arguments -->
+  <arg name="cmd_vel_topic" default="cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- AMCL -->
+  <node pkg="amcl" type="amcl" name="amcl">
+    <param name="min_particles"             value="500"/>
+    <param name="max_particles"             value="1000"/>
+    <param name="kld_err"                   value="0.01"/>
+    <param name="kld_z" value="0.99"/>
+    <param name="update_min_d"              value="0.05"/>
+    <param name="update_min_a"              value="0.1"/>
+    <param name="resample_interval"         value="2"/>
+    <param name="transform_tolerance"       value="0.1"/>
+    <param name="recovery_alpha_slow"       value="0.01"/>
+    <param name="recovery_alpha_fast"       value="0.1"/>
+    <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
+    <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
+    <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
+    <param name="gui_publish_rate"          value="10.0"/>
+    <param name="use_map_topic" value="false"/>
+    <param name="first_map_only" value="true"/>
+    
+    <remap from="scan"                      to="$(arg scan_topic)"/>
+    <param name="laser_max_range"           value="20"/>
+    <param name="laser_max_beams"           value="1000"/>
+    <param name="laser_z_hit"               value="0.95"/>
+    <param name="laser_z_short"             value="0.1"/>
+    <param name="laser_z_max"               value="0.05"/>
+    <param name="laser_z_rand"              value="0.05"/>
+    <param name="laser_sigma_hit"           value="0.2"/>
+    <param name="laser_lambda_short"        value="0.1"/>
+    <param name="laser_likelihood_max_dist" value="2.0"/>
+    <param name="laser_model_type"          value="likelihood_field"/>
+
+    <param name="odom_model_type"           value="diff"/>
+    <param name="odom_alpha1"               value="0.9"/>
+    <param name="odom_alpha2"               value="0.2"/>
+    <param name="odom_alpha3"               value="0.2"/>
+    <param name="odom_alpha4"               value="0.2"/>
+    <param name="odom_frame_id"             value="$(arg set_odom_frame)"/>
+    <param name="base_frame_id"             value="$(arg set_base_frame)"/>
+    <param name="global_frame_id"           value="$(arg set_map_frame)"/>
+
+    <remap from="map" to="/map"/>
+    <remap from="static_map" to="/static_map"/>
+  </node>
+
+  <!-- move_base -->
+   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
+     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+     <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
+     <param name="local_path_cost" value="180"/>
+
+    <rosparam file="$(find omo_r1_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find omo_r1_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find omo_r1_navigation)/config/global_costmap.yaml" command="load"/>
+    <rosparam file="$(find omo_r1_navigation)/config/local_costmap.yaml" command="load"/>
+
+    <rosparam file="$(find omo_r1_navigation)/config/global_planner.yaml" command="load"/>
+    <rosparam file="$(find omo_r1_navigation)/config/clobot_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find omo_r1_navigation)/config/test_local_costmap_params.yaml" command="load" /> 
+
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
+    
+    <param name="global_costmap/global_frame"       value="$(arg set_map_frame)"/>
+    <param name="global_costmap/robot_base_frame"   value="$(arg set_base_frame)"/>
+    <param name="global_costmap/scan/sensor_frame"  value="$(arg set_scan_frame)"/>
+    <param name="global_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+
+    <param name="local_costmap/global_frame"        value="$(arg set_map_frame)"/>
+    <param name="local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
+    <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+    <param name="local_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+
+    <param name="test_local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
+    
+    <remap from="map" to="/map"/>
+  </node>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)">
+    <include file="$(find clober_description)/launch/nav.launch"/>
+  </group>
+
+</launch>
