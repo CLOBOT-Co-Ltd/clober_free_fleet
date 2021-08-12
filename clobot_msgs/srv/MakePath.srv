@@ -1,0 +1,3 @@
+nav_msgs/Path viaPath
+---
+nav_msgs/Path staticPath

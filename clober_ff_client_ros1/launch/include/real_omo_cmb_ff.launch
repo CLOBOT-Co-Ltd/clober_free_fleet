@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="model" default="clober"/>
+  <arg name="model" default="omo"/>
   <arg name="open_rviz" default="false"/>
 
   <!-- amcl Arguments -->
@@ -21,15 +21,15 @@
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
     <param name="min_particles"             value="500"/>
-    <param name="max_particles"             value="5000"/>
+    <param name="max_particles"             value="1000"/>
     <param name="kld_err"                   value="0.01"/>
     <param name="kld_z" value="0.99"/>
-    <param name="update_min_d"              value="0.1"/>
-    <param name="update_min_a"              value="0.25"/>
+    <param name="update_min_d"              value="0.05"/>
+    <param name="update_min_a"              value="0.1"/>
     <param name="resample_interval"         value="2"/>
-    <param name="transform_tolerance"       value="0.5"/>
-    <param name="recovery_alpha_slow"       value="0.00"/>
-    <param name="recovery_alpha_fast"       value="0.00"/>
+    <param name="transform_tolerance"       value="0.1"/>
+    <param name="recovery_alpha_slow"       value="0.01"/>
+    <param name="recovery_alpha_fast"       value="0.1"/>
     <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
     <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
     <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
@@ -38,8 +38,8 @@
     <param name="first_map_only" value="true"/>
     
     <remap from="scan"                      to="$(arg scan_topic)"/>
-    <param name="laser_max_range"           value="3.5"/>
-    <param name="laser_max_beams"           value="30"/>
+    <param name="laser_max_range"           value="20"/>
+    <param name="laser_max_beams"           value="1000"/>
     <param name="laser_z_hit"               value="0.95"/>
     <param name="laser_z_short"             value="0.1"/>
     <param name="laser_z_max"               value="0.05"/>
@@ -50,7 +50,7 @@
     <param name="laser_model_type"          value="likelihood_field"/>
 
     <param name="odom_model_type"           value="diff"/>
-    <param name="odom_alpha1"               value="0.2"/>
+    <param name="odom_alpha1"               value="0.9"/>
     <param name="odom_alpha2"               value="0.2"/>
     <param name="odom_alpha3"               value="0.2"/>
     <param name="odom_alpha4"               value="0.2"/>
@@ -63,45 +63,42 @@
   </node>
 
   <!-- move_base -->
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
+     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+     <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
+     <param name="local_path_cost" value="180"/>
 
-    <!-- <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" /> -->
-    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />
+    <rosparam file="$(find omo_r1_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
+    <rosparam file="$(find omo_r1_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
+    <rosparam file="$(find omo_r1_navigation)/config/global_costmap.yaml" command="load"/>
+    <rosparam file="$(find omo_r1_navigation)/config/local_costmap.yaml" command="load"/>
 
-    <!-- <rosparam file="$(find clober_navigation)/config/move_base.yaml" command="load"/> -->
+    <rosparam file="$(find omo_r1_navigation)/config/global_planner.yaml" command="load"/>
+    <rosparam file="$(find omo_r1_navigation)/config/clobot_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find omo_r1_navigation)/config/test_local_costmap_params.yaml" command="load" /> 
 
-    <rosparam file="$(find clober_navigation)/config/global_planner.yaml" command="load"/>
-
-    <!-- <rosparam file="$(find clober_navigation)/config/dwa_local_planner.yaml" command="load"/> -->
-    <rosparam file="$(find clober_navigation)/config/tra_local_planner.yaml" command="load"/>
-
-    <rosparam file="$(find clober_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
-    <rosparam file="$(find clober_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find clober_navigation)/config/local_costmap.yaml" command="load"/>
-    <rosparam file="$(find clober_navigation)/config/global_costmap.yaml" command="load"/>
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
-
-    <param name="global_costmap/scan/sensor_frame"  value="$(arg set_scan_frame)"/>
     
     <param name="global_costmap/global_frame"       value="$(arg set_map_frame)"/>
     <param name="global_costmap/robot_base_frame"   value="$(arg set_base_frame)"/>
+    <param name="global_costmap/scan/sensor_frame"  value="$(arg set_scan_frame)"/>
+    <param name="global_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
 
-    <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
-    <param name="local_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
-    
-    <!-- <param name="local_costmap/global_frame"        value="$(arg set_odom_frame)"/> -->
     <param name="local_costmap/global_frame"        value="$(arg set_map_frame)"/>
     <param name="local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
+    <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+    <param name="local_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+
+    <param name="test_local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
     
     <remap from="map" to="/map"/>
   </node>
 
   <!-- rviz -->
   <group if="$(arg open_rviz)">
-    <include file="$(find clober_description)/launch/rviz.launch"/>
+    <include file="$(find clober_description)/launch/nav.launch"/>
   </group>
 
 </launch>
