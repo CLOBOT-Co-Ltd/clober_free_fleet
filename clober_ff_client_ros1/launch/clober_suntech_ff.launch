@@ -37,9 +37,18 @@
     <param name="level_name" type="string" value="L1"/>
     <param name="dds_domain" type="int" value="123"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
+<<<<<<< HEAD
     <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/>
+=======
+    <param name="battery_state_topic" value="battery_state"/>
+    <param name="robot_frame" value="base_footprint"/>
+    <param name="move_base_server_name" value="move_base"/>
+    <!-- <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
+    <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
+    <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/> -->
+>>>>>>> check
   </node>
 
   <!-- launch the overall visualization on rviz -->
