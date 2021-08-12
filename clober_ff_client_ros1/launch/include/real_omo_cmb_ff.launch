@@ -98,7 +98,7 @@
 
   <!-- rviz -->
   <group if="$(arg open_rviz)">
-    <include file="$(find clober_description)/launch/nav.launch"/>
+    <include file="$(find clober_description)/launch/nav.rviz"/>
   </group>
 
 </launch>
