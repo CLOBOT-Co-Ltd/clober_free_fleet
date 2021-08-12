@@ -7,11 +7,6 @@ find_package(ament_cmake QUIET)
 if (ament_cmake_FOUND)
 
   install(
-    DIRECTORY launch
-    DESTINATION share/${PROJECT_NAME}
-  )
-
-  install(
     PROGRAMS 
       scripts/send_destination_request.py
       scripts/send_path_request.py
