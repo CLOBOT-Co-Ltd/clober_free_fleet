@@ -27,20 +27,20 @@
   </include>
 
   <!-- launch the free fleet client of multi clobers -->
-  <!-- <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
+  <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
-    <param name="fleet_name" type="string" value="clober"/>
+    <param name="fleet_name" type="string" value="omo"/>
     <param name="robot_name" type="string" value="$(arg cb_0_prefix)"/>
     <param name="level_name" type="string" value="L1"/>
-    <param name="dds_domain" type="int" value="123"/>
+    <param name="dds_domain" type="int" value="124"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="battery_state"/>
     <param name="robot_frame" value="base_footprint"/>
-    <param name="move_base_server_name" value="move_base"/> -->
+    <param name="move_base_server_name" value="move_base"/>
     <!-- <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/> -->
-  <!-- </node> -->
+  </node>
 
   <!-- launch the overall visualization on rviz -->
   <!-- <group ns="$(arg cb_0_prefix)">
