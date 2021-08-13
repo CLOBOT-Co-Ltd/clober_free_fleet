@@ -1,7 +1,7 @@
 <launch>
   <arg name="model" default="clober"/>
   <arg name="map_file" default="$(find clober_simulation)/map/suntech/suntech.yaml"/>
-  <!-- <arg name="open_rviz" default="true"/> -->
+  <arg name="open_rviz" default="true"/>
   <arg name="set_map_frame"  default="map"/>
 
   <arg name="cb_0_prefix" value="clober_3"/>
@@ -26,7 +26,7 @@
   </include>
 
   <!-- launch the free fleet client of multi clobers -->
-  <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
+  <!-- <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="$(arg cb_0_prefix)"/>
@@ -35,11 +35,11 @@
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="battery_state"/>
     <param name="robot_frame" value="base_footprint"/>
-    <param name="move_base_server_name" value="move_base"/>
+    <param name="move_base_server_name" value="move_base"/> -->
     <!-- <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/> -->
-  </node>
+  <!-- </node> -->
 
   <!-- launch the overall visualization on rviz -->
   <!-- <group ns="$(arg cb_0_prefix)">
