@@ -63,7 +63,7 @@
   </node>
 
   <!-- move_base -->
-   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
+   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="log">
      <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
      <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
      <param name="local_path_cost" value="180"/>
