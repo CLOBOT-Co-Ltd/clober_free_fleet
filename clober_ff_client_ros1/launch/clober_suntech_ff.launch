@@ -51,8 +51,8 @@
   </node>
 
   <!-- launch the overall visualization on rviz -->
-  <!-- <group ns="$(arg cb_0_prefix)">
+  <!-- <group ns="$(arg cb_0_prefix)"> -->
   <node pkg="rviz" type="rviz" name="rviz" required="true"
         args="-d $(find clober_ff_client_ros1)/rviz/multi_clober_ff.rviz"/>
- </group> -->
+ <!-- </group> -->
 </launch>
