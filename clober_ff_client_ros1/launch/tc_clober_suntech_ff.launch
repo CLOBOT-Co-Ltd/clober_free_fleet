@@ -11,12 +11,13 @@
     <arg name="clober" value="$(arg cb_prefix)"/>
   </include>
 
+  <group ns="$(arg cb_prefix)">
+
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)">
     <param name="frame_id" value="$(arg set_map_frame)"/>
   </node>
 
-  <group ns="$(arg cb_prefix)">
   <include file="$(find clober_ff_client_ros1)/launch/include/real_clober_cmb_ff.launch">
     <arg name="model" value="$(arg model)"/>
     <!-- <arg name="scan_topic" value="$(arg cb_prefix)/scan"/> -->
@@ -25,8 +26,8 @@
     <arg name="set_scan_frame" value="$(arg cb_prefix)/base_scan"/>
     <arg name="set_map_frame" value="$(arg set_map_frame)"/>
     <arg name="open_rviz" value="false"/>
-    <arg name="initial_pose_x" default="2.88"/>
-    <arg name="initial_pose_y" default="0.44"/>
+    <arg name="initial_pose_x" default="1.8787"/>
+    <arg name="initial_pose_y" default="0.3808"/>
     <arg name="initial_pose_a" default=" 0.0"/>
   </include>
 
@@ -48,11 +49,10 @@
   </node> -->
 
   <!-- launch the overall visualization on rviz -->
-  <!-- <group ns="$(arg cb_prefix)"> -->
+  <!--<group ns="$(arg cb_prefix)"> 
   <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find clober_ff_client_ros1)/rviz/tc_clober_ff.rviz">
     <remap from="/initialpose" to="$(arg cb_prefix)/initialpose"/>
     <remap from="/move_base_simple/goal" to="$(arg cb_prefix)/move_base_simple/goal"/>
   </node>
-
- <!-- </group> -->
+ </group>-->
 </launch>
