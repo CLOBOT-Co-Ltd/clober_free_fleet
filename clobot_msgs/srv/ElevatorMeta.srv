@@ -1,0 +1,5 @@
+bool data
+geometry_msgs/Pose2D coordinates
+---
+bool success
+string message

@@ -1,0 +1,2 @@
+string robotID
+bool move
