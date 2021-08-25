@@ -1,7 +1,7 @@
 <launch>
 
   <arg name="model" default="clober"/>
-  <arg name="open_rviz" default="false"/>
+  <arg name="open_rviz" default="true"/>
 
   <!-- amcl Arguments -->
   <arg name="scan_topic"     default="scan"/>
