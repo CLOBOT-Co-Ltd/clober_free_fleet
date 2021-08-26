@@ -1,11 +1,11 @@
 <launch>
   <arg name="model" default="clober"/>
-  <arg name="map_file" default="$(find clober_navigation)/maps/map.yaml"/>
-  <!-- <arg name="open_rviz" default="true"/> -->
+  <arg name="map_file" default="$(find clober_simulation)/map/rmf_3x3/map.yaml"/>
+  <arg name="open_rviz" default="true"/>
   <arg name="set_map_frame"  default="map"/>
 
-  <!-- launches the clober logo world -->
-  <include file="$(find clober_simulation)/launch/multi_logo_world.launch">
+  <!-- launches the clober 3x3 world -->
+  <include file="$(find clober_simulation)/launch/rmf/rmf_multi_3x3_world.launch">
     <arg name="model" value="$(arg model)"/>
   </include>
 
@@ -16,31 +16,31 @@
 
   <arg name="cb_0_prefix" value="clober_0"/>
   <group ns="$(arg cb_0_prefix)">
-    <include file="$(find clober_ff_client_ros1)/launch/include/single_clober_ff.launch">
+    <include file="$(find clober_ff_client_ros1)/launch/include/cmb/sim/single_clober_cmb_ff.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg cb_0_prefix)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg cb_0_prefix)/odom"/>
       <arg name="set_scan_frame" value="$(arg cb_0_prefix)/base_scan"/>
       <arg name="set_map_frame" value="$(arg set_map_frame)"/>
       <arg name="open_rviz" value="false"/>
-      <arg name="initial_pose_x" default="-1.0"/>
-      <arg name="initial_pose_y" default=" 1.0"/>
-      <arg name="initial_pose_a" default="-1.5708"/>
+      <arg name="initial_pose_x" default=" 2.8"/>
+      <arg name="initial_pose_y" default="-2.0"/>
+      <arg name="initial_pose_a" default=" 0.0"/>
     </include>
   </group>
 
   <arg name="cb_1_prefix" value="clober_1"/>
   <group ns="$(arg cb_1_prefix)">
-    <include file="$(find clober_ff_client_ros1)/launch/include/single_clober_ff.launch">
+    <include file="$(find clober_ff_client_ros1)/launch/include/cmb/sim/single_clober_cmb_ff.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg cb_1_prefix)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg cb_1_prefix)/odom"/>
       <arg name="set_scan_frame" value="$(arg cb_1_prefix)/base_scan"/>
       <arg name="set_map_frame" value="$(arg set_map_frame)"/>
       <arg name="open_rviz" value="false"/>
-      <arg name="initial_pose_x" default=" 1.0"/>
-      <arg name="initial_pose_y" default="-1.0"/>
-      <arg name="initial_pose_a" default="-1.5708"/>
+      <arg name="initial_pose_x" default=" 7.0"/>
+      <arg name="initial_pose_y" default="-6.0"/>
+      <arg name="initial_pose_a" default=" 0.0"/>
     </include>
   </group>
 
@@ -49,8 +49,8 @@
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="$(arg cb_0_prefix)"/>
-    <param name="level_name" type="string" value="clober_world"/>
-    <param name="dds_domain" type="int" value="42"/>
+    <param name="level_name" type="string" value="L1"/>
+    <param name="dds_domain" type="int" value="123"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
@@ -61,8 +61,8 @@
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="$(arg cb_1_prefix)"/>
-    <param name="level_name" type="string" value="clober_world"/>
-    <param name="dds_domain" type="int" value="42"/>
+    <param name="level_name" type="string" value="L1"/>
+    <param name="dds_domain" type="int" value="123"/>
     <param name="max_dist_to_first_waypoint" type="double" value="10.0"/>
     <param name="battery_state_topic" value="$(arg cb_1_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_1_prefix)/base_footprint"/>
@@ -71,6 +71,9 @@
 
   <!-- launch the overall visualization on rviz -->
   <node pkg="rviz" type="rviz" name="rviz" required="true"
-        args="-d $(find clober_ff_client_ros1)/rviz/multi_clober_ff.rviz"/>
+        args="-d $(find clober_ff_client_ros1)/rviz/multi_clober_ff.rviz">  
+    <!-- <remap from="/move_base_simple/goal" to="$(arg cb_0_prefix)/move_base_simple/goal"/> -->
+
+  </node>
 
 </launch>

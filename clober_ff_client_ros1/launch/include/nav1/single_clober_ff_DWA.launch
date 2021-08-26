@@ -1,7 +1,7 @@
 <launch>
 
   <arg name="model" default="clober"/>
-  <arg name="open_rviz" default="true"/>
+  <arg name="open_rviz" default="false"/>
 
   <!-- amcl Arguments -->
   <arg name="scan_topic"     default="scan"/>
@@ -63,36 +63,25 @@
   </node>
 
   <!-- move_base -->
-   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
-     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
-     <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
-     <param name="local_path_cost" value="180"/>
-
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find clober_navigation)/config/move_base.yaml" command="load"/>
+    <rosparam file="$(find clober_navigation)/config/dwa_local_planner.yaml" command="load"/>
     <rosparam file="$(find clober_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap"/>
     <rosparam file="$(find clober_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap"/>
-    <rosparam file="$(find clober_navigation)/config/global_costmap.yaml" command="load"/>
     <rosparam file="$(find clober_navigation)/config/local_costmap.yaml" command="load"/>
-
-    <rosparam file="$(find clober_navigation)/config/global_planner.yaml" command="load"/>
-    <rosparam file="$(find clober_navigation)/config/clobot_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find clober_navigation)/config/test_local_costmap_params.yaml" command="load" /> 
-
+    <rosparam file="$(find clober_navigation)/config/global_costmap.yaml" command="load"/>
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
     <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
     
+    <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+    <param name="local_costmap/global_frame"        value="$(arg set_odom_frame)"/>
+    <param name="local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
+    <param name="local_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
+    <param name="global_costmap/scan/sensor_frame"  value="$(arg set_scan_frame)"/>
     <param name="global_costmap/global_frame"       value="$(arg set_map_frame)"/>
     <param name="global_costmap/robot_base_frame"   value="$(arg set_base_frame)"/>
-    <param name="global_costmap/scan/sensor_frame"  value="$(arg set_scan_frame)"/>
-    <param name="global_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
-
-    <param name="local_costmap/global_frame"        value="$(arg set_map_frame)"/>
-    <param name="local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
-    <param name="local_costmap/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
-    <param name="local_costmap/obstacle_layer/scan/sensor_frame"   value="$(arg set_scan_frame)"/>
-
-    <param name="test_local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
-    
     <remap from="map" to="/map"/>
   </node>
 

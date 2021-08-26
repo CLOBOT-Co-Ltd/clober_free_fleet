@@ -6,12 +6,11 @@ Panels:
       Expanded:
         - /TF1/Frames1
         - /TF1/Tree1
-        - /clober_01
-        - /clober_01/Local Map1/MarkerArray1
+        - /clober_01/Local Map1/Costmap1
+        - /clober_01/LaserScan1
         - /clober_11
         - /clober_11/Global Map1/Costmap1
-        - /clober_11/Local Map1
-        - /clober_11/Local Map1/MarkerArray1
+        - /clober_11/Local Map1/Costmap1
       Splitter Ratio: 0.4002998471260071
     Tree Height: 448
   - Class: rviz/Selection
@@ -293,7 +292,7 @@ Visualization Manager:
               Enabled: true
               Name: Polygon
               Queue Size: 10
-              Topic: /clober_0/cmb_node/local_costmap/footprint
+              Topic: /cmb_node/local_costmap/footprint
               Unreliable: false
               Value: true
             - Alpha: 0.699999988079071
@@ -332,7 +331,7 @@ Visualization Manager:
               Value: false
             - Class: rviz/MarkerArray
               Enabled: true
-              Marker Topic: /clober_0/localpath
+              Marker Topic: /localpath
               Name: MarkerArray
               Namespaces:
                 {}
@@ -603,7 +602,7 @@ Visualization Manager:
               Enabled: true
               Name: Polygon
               Queue Size: 10
-              Topic: /clober_1/cmb_node/local_costmap/footprint
+              Topic: /cmb_node/local_costmap/footprint
               Unreliable: false
               Value: true
             - Alpha: 0.699999988079071
@@ -642,7 +641,7 @@ Visualization Manager:
               Value: false
             - Class: rviz/MarkerArray
               Enabled: true
-              Marker Topic: /clober_1/localpath
+              Marker Topic: /localpath
               Name: MarkerArray
               Namespaces:
                 {}
@@ -700,7 +699,7 @@ Visualization Manager:
           Axis: Z
           Channel Name: intensity
           Class: rviz/LaserScan
-          Color: 0; 255; 0
+          Color: 245; 121; 0
           Color Transformer: FlatColor
           Decay Time: 0
           Enabled: true
@@ -869,10 +868,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 99.2381362915039
+      Scale: 159.3367462158203
       Target Frame: <Fixed Frame>
-      X: 6.0552144050598145
-      Y: -4.21079683303833
+      X: 5.577373504638672
+      Y: -4.2983551025390625
     Saved: ~
 Window Geometry:
   Displays:
