@@ -64,7 +64,9 @@
 
   <!-- move_base -->
    <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
+   <!-- <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen"> -->
      <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+     <!-- <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> -->
      <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
      <param name="local_path_cost" value="180"/>
 
@@ -74,6 +76,7 @@
     <rosparam file="$(find clober_navigation)/config/local_costmap.yaml" command="load"/>
 
     <rosparam file="$(find clober_navigation)/config/global_planner.yaml" command="load"/>
+    <!-- <rosparam file="$(find clober_navigation)/config/tra_local_planner.yaml" command="load" /> -->
     <rosparam file="$(find clober_navigation)/config/clobot_local_planner_params.yaml" command="load" />
     <rosparam file="$(find clober_navigation)/config/test_local_costmap_params.yaml" command="load" /> 
 

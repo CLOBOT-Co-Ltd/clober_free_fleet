@@ -16,7 +16,7 @@ Start a new ROS1 workspace, and pull in the necessary repositories,
 ```bash
 mkdir -p ~/client_ws/src
 cd ~/client_ws/src
-git clone https://github.com/open-rmf/free_fleet
+git clone -b clober-dev https://github.com/CLOBOT-Co-Ltd/free_fleet.git
 git clone https://github.com/eclipse-cyclonedds/cyclonedds
 git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet.git
 git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clober.git
@@ -34,7 +34,7 @@ Source ROS1 and build,
 ```bash
 cd ~/client_ws
 source /opt/ros/noetic/setup.bash
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
+colcon build --symlink-install
 ```
 
 ### 2.2 Install Free Fleet Server in ROS2 foxy
@@ -43,9 +43,9 @@ Start a new ROS2 workspace, and pull in the necessary repositories,
 ```bash
 mkdir -p ~/server_ws/src
 cd ~/server_ws/src
-git clone https://github.com/open-rmf/free_fleet
+git clone -b clober-dev https://github.com/CLOBOT-Co-Ltd/free_fleet.git
+git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet_server.git
 git clone https://github.com/open-rmf/rmf_internal_msgs
-git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet.git
 ```
 
 Install all the dependencies through rosdep,
@@ -58,7 +58,7 @@ Source ROS2 and build,
 ```bash
 cd ~/server_ws
 source /opt/ros/foxy/setup.bash
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=RELEASE
+colcon build --symlink-install
 ```
 
 ## 3. Examples
@@ -109,7 +109,7 @@ ros2 topic echo /fleet_states
 Launch the clober free fleet client ROS 1(noetic) :
 ```bash
 source ~/client_ws/install/setup.bash
-roslaunch clober_ff_client_ros1 multi_clober_world_ff.launch
+roslaunch clober_ff_client_ros1 clober_suntech_ff.launch
 ```
 
 Launch the clober free fleet server int ROS 2(foxy) :

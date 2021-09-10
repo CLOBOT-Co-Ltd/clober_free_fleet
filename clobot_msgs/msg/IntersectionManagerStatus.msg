@@ -1,1 +1,0 @@
-IntersectionStatus[] data
