@@ -20,6 +20,7 @@ git clone -b clober-dev https://github.com/CLOBOT-Co-Ltd/free_fleet.git
 git clone https://github.com/eclipse-cyclonedds/cyclonedds
 git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet.git
 git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clober.git
+git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clobot_msgs.git
 sudo apt-get install ros-noetic-rosgraph-msgs
 sudo apt-get install ros-noetic-rosgraph 
 ```
@@ -118,6 +119,9 @@ source ~/server_ws/install/setup.bash
 ros2 launch clober_ff_server_ros2 clober_world_ff.xml
 ```
 
+[![Clober Free Fleet Simulation](https://img.youtube.com/vi/Hh-bSrm_ZNc/0.jpg)](https://www.youtube.com/watch?v=Hh-bSrm_ZNc "Clober Free Fleet Simulation")
+
+
 ### 3.4 Commands and Requests
 
 There are 3 types of commands/requests that can be sent to the simulated robots through `free_fleet`.
@@ -125,6 +129,9 @@ There are 3 types of commands/requests that can be sent to the simulated robots 
 #### 3.4.1 Destination Requests
 
 Destination requests : command the robot to go to the single destination
+
+[![Clober Free Fleet Simulation](https://img.youtube.com/vi/dJ_G-Utje3w/0.jpg)](https://www.youtube.com/watch?v=dJ_G-Utje3w "Clober Free Fleet Simulation")
+
 
 ```bash
 ros2 run clober_ff_server_ros2 send_destination_request.py -f FLEET_NAME -r ROBOT_NAME -x 1.725 -y -0.39 --yaw 0.0 -i UNIQUE_TASK_ID
@@ -152,6 +159,9 @@ ros2 run clober_ff_server_ros2 send_path_request.py -f clober -r clober_0 -i pat
 #### 3.4.3 Mode Requests
 
 Mode Requests : command the robot to `pause` or `resume`
+
+[![Clober Free Fleet Simulation](https://img.youtube.com/vi/733UkaXWgEg/0.jpg)](https://www.youtube.com/watch?v=733UkaXWgEg "Clober Free Fleet Simulation")
+
 
 * pause
 ```bash
