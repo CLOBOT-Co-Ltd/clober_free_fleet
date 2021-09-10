@@ -1,2 +1,0 @@
-string robot_id
-string map_id

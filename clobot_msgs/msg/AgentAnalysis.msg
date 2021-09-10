@@ -1,2 +1,0 @@
-string time
-string nodeID
