@@ -16,7 +16,7 @@
 
   <arg name="cb_0_prefix" value="clober_0"/>
   <group ns="$(arg cb_0_prefix)">
-    <include file="$(find clober_ff_client_ros1)/launch/include/single_clober_ff.launch">
+    <include file="$(find clober_ff_client_ros1)/launch/include/single_clober_cmb_ff.launch">
       <arg name="model" value="$(arg model)"/>
       <arg name="set_base_frame" value="$(arg cb_0_prefix)/base_footprint"/>
       <arg name="set_odom_frame" value="$(arg cb_0_prefix)/odom"/>
@@ -30,7 +30,7 @@
   </group>
 
   <!-- launch the free fleet client of multi clobers -->
-  <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
+  <!-- <node name="$(arg cb_0_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="$(arg cb_0_prefix)"/>
@@ -40,10 +40,11 @@
     <param name="battery_state_topic" value="$(arg cb_0_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_0_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_0_prefix)/move_base"/>
-  </node>
+  </node> -->
 
   <!-- launch the overall visualization on rviz -->
+  <!-- <group ns="$(arg cb_0_prefix)">
   <node pkg="rviz" type="rviz" name="rviz" required="true"
         args="-d $(find clober_ff_client_ros1)/rviz/multi_clober_ff.rviz"/>
-
+ </group> -->
 </launch>
