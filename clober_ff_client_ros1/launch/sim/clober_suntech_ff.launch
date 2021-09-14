@@ -44,7 +44,7 @@
     </include>
   </group>
 
-  <arg name="cb_2_prefix" value="clober_2"/>
+  <!-- <arg name="cb_2_prefix" value="clober_2"/>
   <group ns="$(arg cb_2_prefix)">
     <include file="$(find clober_ff_client_ros1)/launch/include/cmb/sim/single_clober_cmb_ff.launch">
       <arg name="model" value="$(arg model)"/>
@@ -57,7 +57,7 @@
       <arg name="initial_pose_y" default="11.05311"/>
       <arg name="initial_pose_a" default=" 0.0"/>
     </include>
-  </group>
+  </group> -->
 
 
   <!-- launch the free fleet client of multi clobers -->
@@ -85,7 +85,7 @@
     <param name="move_base_server_name" value="$(arg cb_1_prefix)/move_base"/>
   </node>
 
-    <node name="$(arg cb_2_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
+    <!-- <node name="$(arg cb_2_prefix)_free_fleet_client_node" pkg="free_fleet_client_ros1"
       type="free_fleet_client_ros1" output="screen">
     <param name="fleet_name" type="string" value="clober"/>
     <param name="robot_name" type="string" value="$(arg cb_2_prefix)"/>
@@ -95,7 +95,7 @@
     <param name="battery_state_topic" value="$(arg cb_2_prefix)/battery_state"/>
     <param name="robot_frame" value="$(arg cb_2_prefix)/base_footprint"/>
     <param name="move_base_server_name" value="$(arg cb_2_prefix)/move_base"/>
-  </node>
+  </node> -->
 
 
   <!-- launch the overall visualization on rviz -->
