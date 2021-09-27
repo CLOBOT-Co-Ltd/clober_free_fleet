@@ -38,8 +38,8 @@
       <arg name="set_scan_frame" value="$(arg cb_1_prefix)/base_scan"/>
       <arg name="set_map_frame" value="$(arg set_map_frame)"/>
       <arg name="open_rviz" value="false"/>
-      <arg name="initial_pose_x" default="2.88247"/>
-      <arg name="initial_pose_y" default="0.44454"/>
+      <arg name="initial_pose_x" default="5.8564"/>
+      <arg name="initial_pose_y" default="0.41104"/>
       <arg name="initial_pose_a" default=" 0.0"/>
     </include>
   </group>

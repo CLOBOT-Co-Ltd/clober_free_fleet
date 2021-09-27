@@ -20,6 +20,7 @@ git clone -b clober-dev https://github.com/CLOBOT-Co-Ltd/free_fleet.git
 git clone https://github.com/eclipse-cyclonedds/cyclonedds
 git clone https://github.com/CLOBOT-Co-Ltd/clober_free_fleet.git
 git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clober.git
+git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clober_msgs.git
 git clone -b noetic-devel https://github.com/CLOBOT-Co-Ltd/clobot_msgs.git
 sudo apt-get install ros-noetic-rosgraph-msgs
 sudo apt-get install ros-noetic-rosgraph 
