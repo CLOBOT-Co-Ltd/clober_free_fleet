@@ -31,7 +31,7 @@
     <arg name="initial_pose_a" default=" 0.0"/>
   </include>
 
-  <node name="tc_agent" pkg="tc_agent" type="tc_agent_node" args="$(find tc_agent)/conf/$(arg map_name)/$(arg cb_prefix).json" output="screen"/>
+  <!-- <node name="tc_agent" pkg="tc_agent" type="tc_agent_node" args="$(find tc_agent)/conf/$(arg map_name)/$(arg cb_prefix).json" output="screen"/> -->
   </group>
 
   <!-- launch the free fleet client of multi clobers -->
