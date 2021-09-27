@@ -9,7 +9,7 @@
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
   <arg name="set_base_frame" default="base_footprint"/>
-  <arg name="set_odom_frame" default="odom"/>s
+  <arg name="set_odom_frame" default="odom"/>
   <arg name="set_scan_frame" default="base_scan"/>
   <arg name="set_map_frame"  default="map"/>
 
@@ -58,12 +58,12 @@
     <param name="base_frame_id"             value="$(arg set_base_frame)"/>
     <param name="global_frame_id"           value="$(arg set_map_frame)"/>
 
-    <!--remap from="map" to="/map"/-->
-    <!--remap from="static_map" to="/static_map"/-->
+    <remap from="map" to="/map"/>
+    <remap from="static_map" to="/static_map"/>
   </node>
 
   <!-- move_base -->
-   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="log">
+   <node pkg="clobot_movebase" type="cmb_node" respawn="false" name="cmb_node" output="screen">
      <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
      <param name="base_local_planner" value="clobot_local_planner/CLOBOTPlannerROS"/>
      <param name="local_path_cost" value="180"/>
@@ -79,7 +79,6 @@
 
     <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
     <remap from="odom" to="$(arg odom_topic)"/>
-    <param name="DWAPlannerROS/min_vel_x" value="0.0" if="$(arg move_forward_only)" />
     
     <param name="global_costmap/global_frame"       value="$(arg set_map_frame)"/>
     <param name="global_costmap/robot_base_frame"   value="$(arg set_base_frame)"/>
@@ -93,7 +92,8 @@
 
     <param name="test_local_costmap/robot_base_frame"    value="$(arg set_base_frame)"/>
     
-    <!--remap from="map" to="/map"/-->
+    <remap from="map" to="/map"/>
+    <remap from="static_map" to="/static_map"/>
   </node>
 
   <!-- rviz -->

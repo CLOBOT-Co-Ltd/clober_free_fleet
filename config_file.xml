@@ -3,7 +3,7 @@
 https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/master/etc/cyclonedds.xsd">
     <Domain id="any">
         <General>
-            <NetworkInterfaceAddress>wlp6s0</NetworkInterfaceAddress>
+            <NetworkInterfaceAddress>wlo1</NetworkInterfaceAddress>
         </General>
     </Domain>
 </CycloneDDS>
