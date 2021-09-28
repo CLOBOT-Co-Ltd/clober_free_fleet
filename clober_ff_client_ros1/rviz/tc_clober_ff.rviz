@@ -9,6 +9,10 @@ Panels:
         - /clober_01/Global Map1
         - /clober_01/Local Map1/MarkerArray1
         - /clober_01/Local Map1/MarkerArray2
+        - /clober_11
+        - /clober_11/Global Map1
+        - /clober_11/Local Map1
+        - /clober_11/Local Map1/MarkerArray1
         - /MarkerArray1
       Splitter Ratio: 0.4002998471260071
     Tree Height: 297
@@ -358,7 +362,7 @@ Visualization Manager:
               Draw Behind: true
               Enabled: true
               Name: Costmap
-              Topic: /clober_0/cmb_node/global_costmap/costmap
+              Topic: /clober_1/cmb_node/global_costmap/costmap
               Unreliable: false
               Use Timestamp: false
               Value: true
@@ -383,7 +387,7 @@ Visualization Manager:
               Radius: 0.029999999329447746
               Shaft Diameter: 0.10000000149011612
               Shaft Length: 0.10000000149011612
-              Topic: /clober_0/cmb_node/GlobalPlanner/plan
+              Topic: /clober_1/cmb_node/GlobalPlanner/plan
               Unreliable: false
               Value: true
             - Alpha: 1
@@ -420,7 +424,7 @@ Visualization Manager:
               Enabled: true
               Name: Polygon
               Queue Size: 10
-              Topic: /clober_0/cmb_node/local_costmap/footprint
+              Topic: /clober_1/cmb_node/global_costmap/footprint
               Unreliable: false
               Value: true
             - Alpha: 0.699999988079071
@@ -429,7 +433,7 @@ Visualization Manager:
               Draw Behind: false
               Enabled: true
               Name: Costmap
-              Topic: /clober_0/cmb_node/local_costmap/costmap
+              Topic: /clober_1/cmb_node/local_costmap/costmap
               Unreliable: false
               Use Timestamp: false
               Value: true
@@ -459,7 +463,7 @@ Visualization Manager:
               Value: false
             - Class: rviz/MarkerArray
               Enabled: true
-              Marker Topic: /clober_0/localpath
+              Marker Topic: /clober_1/localpath
               Name: MarkerArray
               Namespaces:
                 {}
@@ -467,7 +471,7 @@ Visualization Manager:
               Value: true
             - Class: rviz/Marker
               Enabled: true
-              Marker Topic: /clober_0/point
+              Marker Topic: /clober_1/point
               Name: Marker
               Namespaces:
                 {}
@@ -791,7 +795,7 @@ Visualization Manager:
       Marker Topic: /topology/nodes
       Name: MarkerArray
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
@@ -853,5 +857,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1452
-  X: 88
-  Y: 58
+  X: 355
+  Y: 27
