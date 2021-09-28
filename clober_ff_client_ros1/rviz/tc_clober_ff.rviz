@@ -9,6 +9,7 @@ Panels:
         - /clober_01/Global Map1
         - /clober_01/Local Map1/MarkerArray1
         - /clober_01/Local Map1/MarkerArray2
+        - /MarkerArray1
       Splitter Ratio: 0.4002998471260071
     Tree Height: 297
   - Class: rviz/Selection
@@ -62,39 +63,39 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        clober_2/base_footprint:
+        clober_1/base_footprint:
           Value: true
-        clober_2/base_link:
+        clober_1/base_link:
           Value: true
-        clober_2/base_scan:
+        clober_1/base_scan:
           Value: true
-        clober_2/camera_bottom_screw_frame:
+        clober_1/camera_bottom_screw_frame:
           Value: true
-        clober_2/camera_color_frame:
+        clober_1/camera_color_frame:
           Value: true
-        clober_2/camera_color_optical_frame:
+        clober_1/camera_color_optical_frame:
           Value: true
-        clober_2/camera_depth_frame:
+        clober_1/camera_depth_frame:
           Value: true
-        clober_2/camera_depth_optical_frame:
+        clober_1/camera_depth_optical_frame:
           Value: true
-        clober_2/camera_infra1_frame:
+        clober_1/camera_infra1_frame:
           Value: true
-        clober_2/camera_infra1_optical_frame:
+        clober_1/camera_infra1_optical_frame:
           Value: true
-        clober_2/camera_infra2_frame:
+        clober_1/camera_infra2_frame:
           Value: true
-        clober_2/camera_infra2_optical_frame:
+        clober_1/camera_infra2_optical_frame:
           Value: true
-        clober_2/camera_link:
+        clober_1/camera_link:
           Value: true
-        clober_2/imu_link:
+        clober_1/imu_link:
           Value: true
-        clober_2/left_ultrasonic:
+        clober_1/left_ultrasonic:
           Value: true
-        clober_2/odom:
+        clober_1/odom:
           Value: true
-        clober_2/right_ultrasonic:
+        clober_1/right_ultrasonic:
           Value: true
         map:
           Value: true
@@ -106,30 +107,30 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
-          clober_2/odom:
-            clober_2/base_footprint:
-              clober_2/base_link:
-                clober_2/base_scan:
+          clober_1/odom:
+            clober_1/base_footprint:
+              clober_1/base_link:
+                clober_1/base_scan:
                   {}
-                clober_2/camera_bottom_screw_frame:
-                  clober_2/camera_link:
-                    clober_2/camera_color_frame:
-                      clober_2/camera_color_optical_frame:
+                clober_1/camera_bottom_screw_frame:
+                  clober_1/camera_link:
+                    clober_1/camera_color_frame:
+                      clober_1/camera_color_optical_frame:
                         {}
-                    clober_2/camera_depth_frame:
-                      clober_2/camera_depth_optical_frame:
+                    clober_1/camera_depth_frame:
+                      clober_1/camera_depth_optical_frame:
                         {}
-                    clober_2/camera_infra1_frame:
-                      clober_2/camera_infra1_optical_frame:
+                    clober_1/camera_infra1_frame:
+                      clober_1/camera_infra1_optical_frame:
                         {}
-                    clober_2/camera_infra2_frame:
-                      clober_2/camera_infra2_optical_frame:
+                    clober_1/camera_infra2_frame:
+                      clober_1/camera_infra2_optical_frame:
                         {}
-                clober_2/imu_link:
+                clober_1/imu_link:
                   {}
-                clober_2/left_ultrasonic:
+                clober_1/left_ultrasonic:
                   {}
-                clober_2/right_ultrasonic:
+                clober_1/right_ultrasonic:
                   {}
       Update Interval: 0
       Value: true
@@ -785,6 +786,14 @@ Visualization Manager:
       Unreliable: false
       Use Timestamp: false
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /topology/nodes
+      Name: MarkerArray
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -821,7 +830,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 52.08462142944336
+      Scale: 76.49280548095703
       Target Frame: <Fixed Frame>
       X: 3.219933271408081
       Y: -1.5434069633483887
@@ -844,5 +853,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1452
-  X: 468
-  Y: 27
+  X: 88
+  Y: 58
